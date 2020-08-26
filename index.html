@@ -223,8 +223,10 @@
           }
           totalRondas.innerHTML = this.ultimoNivel
           this.generarSecuencia()
-          this.nombre = nombre.value
-          console.log("NOMBRE "+this.nombre)
+          this.nombre = "Amig@"
+          if(nombre.value){
+            this.nombre = nombre.value
+          }
           this.actualizarTablaPuntaje()
           setTimeout(this.siguienteNivel , 600)
         }
@@ -319,12 +321,12 @@
           if(numeroColor === this.secuencia[this.subnivel]) {
             this.subnivel++
             if(this.subnivel === this.nivel) {
-              this.nivel++
-              this.actualizarTablaPuntaje()
+              this.nivel++             
               this.eliminarEventosClick()
               if(this.nivel === (this.ultimoNivel + 1)) {
                 this.ganoElJuego()
               } else {
+                this.actualizarTablaPuntaje()
                 setTimeout(this.siguienteNivel, 1500)
               }
             }
@@ -335,13 +337,13 @@
         }
 
         ganoElJuego() {
-          swal('Platzi',`Felicitaciones ${this.nombre}, ganaste el juego!`, 'success')
+          swal('Pulento loco',`Felicitaciones ${this.nombre}, ganaste el juego!`, 'success')
           .then(() => {
             this.inicializar()
           })
         }
         perdioElJuego() {
-          swal('Platzi',`Te tiraste ${this.nombre}, camarón que se duerme...se lo lleva el water ;)`, 'error')
+          swal('Malardo',`Te tiraste ${this.nombre}, camarón que se duerme...se lo lleva el water ;)`, 'error')
           .then(() => {
             this.eliminarEventosClick()
             this.inicializar()
